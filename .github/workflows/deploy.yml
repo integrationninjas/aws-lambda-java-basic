@@ -28,4 +28,4 @@ jobs:
           aws-region: 'eu-north-1'  
 
       - name: Upload JAR file to AWS Lambda
-        run: lambda update-function --function-name HandlerString --zip-file fileb://target/lambda-basic-1.0-SNAPSHOT.jar
+        run: aws lambda update-function-code --function-name HandlerString --zip-file fileb://target/lambda-basic-1.0-SNAPSHOT.jar
