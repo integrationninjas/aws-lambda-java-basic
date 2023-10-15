@@ -29,7 +29,7 @@ jobs:
           
       - name: Create AWS Lambda Function
         run: |
-          aws lambda get-function --function-name HandlerString
+          #aws lambda get-function --function-name HandlerString
           getLambdaStatus=$(echo aws lambda get-function --function-name HandlerString)
           echo $getLambdaStatus
           if [[ $getLambdaStatus == 254 ]]; then
