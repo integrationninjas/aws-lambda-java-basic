@@ -32,7 +32,7 @@ jobs:
           aws lambda get-function --function-name HandlerString
           getLambdaStatus=$(echo aws lambda get-function --function-name HandlerString)
           echo $getLambdaStatus
-          if [[ $getLambdaStatus == 255 ]]; then
+          if [[ $getLambdaStatus == 254 ]]; then
             aws lambda create-function --function-name HandlerString --runtime java17 --handler integration.ninjas.HandlerSring::handleRequest \
             --role arn:aws:iam::your-account-id:role/AWSLambdaBasicExecutionRole \
             --zip-file fileb://target/lambda-basic-1.0-SNAPSHOT.jar
