@@ -29,7 +29,7 @@ jobs:
           
       - name: Create AWS Lambda Function
         run: |
-          getLambdaStatus=$(aws lambda get-function --function-name HandlerString)
+          getLambdaStatus=$(aws lambda get-function --function-name HandlerString 2>/dev/null)
           echo $getLambdaStatus
           if [[ $getLambdaStatus -eq 254 ]]; then
             aws lambda create-function --function-name HandlerString --runtime java17 --handler integration.ninjas.HandlerSring::handleRequest \
