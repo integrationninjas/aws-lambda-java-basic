@@ -12,13 +12,13 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v3
 
-      - uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
+      # - uses: actions/setup-java@v3
+      #   with:
+      #     distribution: 'temurin'
+      #     java-version: '17'
 
-      - name: Build Project
-        run: mvn clean install
+      # - name: Build Project
+      #   run: mvn clean install
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
@@ -29,11 +29,11 @@ jobs:
           
       - name: Create AWS Lambda Function
         run: |
-          getLambdaStatus=$(aws lambda get-function --function-name HandlerString 2>&1)
+          getLambdaStatus=$(aws lambda get-function --function-name HandlerString)
           echo "hello"
           if [[ $? == 254 ]]; then
             aws lambda create-function --function-name HandlerString --runtime java17 --handler integration.ninjas.HandlerSring::handleRequest \
-            --role arn:aws:iam::your-account-id:role/AWSLambdaBasicExecutionRole \
+            --role arn:aws:iam::763857617563:user/integrationninjas:role/AWSLambdaBasicExecutionRole \
             --zip-file fileb://target/lambda-basic-1.0-SNAPSHOT.jar
           fi  
           
