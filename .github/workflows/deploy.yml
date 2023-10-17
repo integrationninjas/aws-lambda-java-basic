@@ -30,8 +30,8 @@ jobs:
       - name: Create AWS Lambda Function
         run: |
           getLambdaStatus=$(aws lambda get-function --function-name HandlerString 2>&1)
-          getFuncExitCode=$?
-          if [[ $getFuncExitCode -eq 254 ]]; then
+          echo $?
+          if [[ $? == 254 ]]; then
             aws lambda create-function --function-name HandlerString --runtime java17 --handler integration.ninjas.HandlerSring::handleRequest \
             --role arn:aws:iam::your-account-id:role/AWSLambdaBasicExecutionRole \
             --zip-file fileb://target/lambda-basic-1.0-SNAPSHOT.jar
