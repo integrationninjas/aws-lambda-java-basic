@@ -30,7 +30,7 @@ jobs:
       - name: Create AWS Lambda Function
         run: |
           aws lambda create-function --function-name HandlerString --runtime java17 --handler integration.ninjas.HandlerSring::handleRequest \
-            --role arn:aws:iam::763857617563:user/integrationninjas:role/AWSLambdaBasicExecutionRole \
+            --role arn:aws:iam::763857617563:role/AWSLambdaBasicExecutionRole \
             --zip-file fileb://target/lambda-basic-1.0-SNAPSHOT.jar
         continue-on-error: true    
       
