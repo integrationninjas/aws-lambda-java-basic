@@ -7,13 +7,11 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 public class HandlerString implements RequestHandler<String, String>{
 
     @Override
-    /*
-     * Takes a String as input, and converts all characters to lowercase.
-     */
-    public String handleRequest(String event, Context context)
+    public String handleRequest(String input, Context context)
     {
         LambdaLogger logger = context.getLogger();
-        logger.log("EVENT TYPE: " + event.getClass().toString());
-        return event.toLowerCase();
+        logger.log("Input TYPE: " + input.getClass().toString());
+        logger.log("Input Value: " + input);
+        return new StringBuilder(input).reverse().toString();
     }
 }
